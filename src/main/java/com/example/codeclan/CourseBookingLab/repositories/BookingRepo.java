@@ -10,5 +10,5 @@ import java.util.List;
 public interface BookingRepo extends JpaRepository<Booking, Long> {
 
     //get all bookings for a given date
-    List<Booking> findBookingByDate(String date);
+    List<Booking> findBookingByDateIgnoreCase(String date);
 }

@@ -38,7 +38,18 @@ class CourseBookingLabApplicationTests {
 
 	@Test
 	public void canFindCourseByCustomerName(){
-		assertEquals(1, courseRepo.findCourseByBookingsCustomerName("Jan").size());
+		assertEquals(1, courseRepo.findCourseByBookingsCustomerNameIgnoreCase("Jan").size());
+	}
+
+	@Test
+	public void canGetCustomersByCourseName(){
+		assertEquals(1, customerRepo.findCustomerByTownAndBookingsCourseNameIgnoreCase("Largs","Data Analysis").size());
+	}
+
+	@Test
+	public void canGetCustomersOverAgeInSpecifiedTownForCourse(){
+		assertEquals(1, customerRepo.findCustomerByTownAndBookingsCourseNameAndAgeGreaterThanIgnoreCase("Largs", "Data Analysis", 34).size());
+		assertEquals(0, customerRepo.findCustomerByTownAndBookingsCourseNameAndAgeGreaterThanIgnoreCase("Largs", "Data Analysis", 36).size());
 	}
 
 }

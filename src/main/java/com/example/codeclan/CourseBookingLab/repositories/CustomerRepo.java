@@ -11,13 +11,13 @@ import java.util.List;
 public interface CustomerRepo extends JpaRepository<Customer, Long> {
 
     //what get all customers for a given course
-    List<Customer> findCustomerByBookingsCourseName(String name);
+    List<Customer> findCustomerByBookingsCourseNameIgnoreCase(String name);
 
     //get all customers from a given town on a particular course
-    List <Customer> findCustomerByTownAndBookingsCourseName(String town, String name);
+    List <Customer> findCustomerByTownAndBookingsCourseNameIgnoreCase(String town, String name);
 
     //Get all customers over a certain age in a given town for a given course
-    List <Customer> findCustomerByTownAndBookingsCourseNameAndAgeGreaterThan(String town, String name, int age);
+    List <Customer> findCustomerByTownAndBookingsCourseNameAndAgeGreaterThanIgnoreCase(String town, String name, int age);
 
 
 }

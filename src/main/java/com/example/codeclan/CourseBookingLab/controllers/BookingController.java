@@ -21,7 +21,7 @@ public class BookingController {
             @RequestParam(name="date", required = false)String date
     ){
         if(date!=null){
-            return new ResponseEntity(bookingRepo.findBookingByDate(date), HttpStatus.OK);
+            return new ResponseEntity(bookingRepo.findBookingByDateIgnoreCase(date), HttpStatus.OK);
         }
         return new ResponseEntity(bookingRepo.findAll(), HttpStatus.OK);
     }

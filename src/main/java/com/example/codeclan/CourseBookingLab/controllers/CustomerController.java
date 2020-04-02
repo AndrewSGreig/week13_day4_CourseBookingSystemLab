@@ -21,15 +21,15 @@ public class CustomerController {
     ){
         if(ageGreaterThan!=null && courseName!=null && town!=null){
             //http://localhost:8080/customers?town=Largs&courseName=Data%20Analysis&ageGreaterThan=40
-            return new ResponseEntity(customerRepo.findCustomerByTownAndBookingsCourseNameAndAgeGreaterThan(town, courseName, ageGreaterThan), HttpStatus.OK);
+            return new ResponseEntity(customerRepo.findCustomerByTownAndBookingsCourseNameAndAgeGreaterThanIgnoreCase(town, courseName, ageGreaterThan), HttpStatus.OK);
         }
         if(courseName!=null && town!=null){
             //http://localhost:8080/customers?town=Largs&courseName=Data%20Analysis
-            return new ResponseEntity(customerRepo.findCustomerByTownAndBookingsCourseName(town, courseName), HttpStatus.OK);
+            return new ResponseEntity(customerRepo.findCustomerByTownAndBookingsCourseNameIgnoreCase(town, courseName), HttpStatus.OK);
         }
         if (courseName != null){
             http://localhost:8080/customers?courseName=Data%20Analysis
-            return new ResponseEntity(customerRepo.findCustomerByBookingsCourseName(courseName), HttpStatus.OK);
+            return new ResponseEntity(customerRepo.findCustomerByBookingsCourseNameIgnoreCase(courseName), HttpStatus.OK);
         }
         return new ResponseEntity(customerRepo.findAll(), HttpStatus.OK);
     }
